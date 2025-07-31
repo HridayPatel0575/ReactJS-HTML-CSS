@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="Login-form">
+    <h1>Register</h1>
+    <div class="form-img">
+      <img src="logo.png" alt="Logo" />
+    </div>
+
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Full Name" required />
+      <input type="text" id="regEmail" placeholder="Email Address" required />
+      <input type="password" id="regPass" placeholder="Create Password" required />
+      <button class="btn" type="submit">Register</button>
+    </form>
+
+    <p class="accout">
+      Already have an account? <a href="Login.html">Login</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("regName").value;
+      const email = document.getElementById("regEmail").value;
+      const pass = document.getElementById("regPass").value;
+
+      const user = { name, email, pass };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      window.location.href = "Login.html";
+    });
+  </script>
+</body>
+</html>

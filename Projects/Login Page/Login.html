@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="Login-form">
+    <h1>Login</h1>
+    <div class="form-img">
+      <img src="logo.png" alt="Logo" />
+    </div>
+
+    <form id="loginForm">
+      <input type="text" id="loginName" placeholder="User Name" required />
+      <input type="password" id="loginPass" placeholder="Password" required />
+      <button class="btn" type="submit">Login</button>
+    </form>
+
+    <p class="accout">
+      Don't Have an Account? <a href="Register.html">Register</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const enteredName = document.getElementById("loginName").value;
+      const enteredPass = document.getElementById("loginPass").value;
+
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (!storedUser) {
+        alert("No user found. Please register first.");
+        return;
+      }
+
+      if (enteredName === storedUser.name && enteredPass === storedUser.pass) {
+        alert("Login successful!");
+        window.location.href = "Dashboard.html";
+      } else {
+        alert("Invalid username or password.");
+      }
+    });
+  </script>
+</body>
+</html>

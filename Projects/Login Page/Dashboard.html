@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dashboard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    .dashboard h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+    .dashboard p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1 id="welcomeMessage">Welcome!</h1>
+    <p>We're glad to have you here.</p>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.name) {
+      document.getElementById("welcomeMessage").textContent = `Welcome, ${user.name}!`;
+    } else {
+      alert("Please login first.");
+      window.location.href = "Login.html";
+    }
+  </script>
+</body>
+</html>
